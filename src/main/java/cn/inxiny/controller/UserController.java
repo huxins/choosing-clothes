@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +21,30 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 手机验证码
+     * @param phone
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/validateCode")
+    public String validateCode(String phone){
+        String rd = userService.validateCode(phone);
+        return rd;
+    }
+
+    /**
+     * 图片验证码
+     * @param response
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/picCode")
+    public String picCode(HttpServletResponse response) throws IOException {
+        String code = userService.picCode(response);
+        System.out.println(code);
+        return code;
+    }
 
     /**
      * 用户注册
@@ -52,8 +78,10 @@ public class UserController {
 
         Map map = new HashMap();
         map.put("msg","登陆成功");
-        map.put("data",user1);
+        map.put("data",user);
         map.put("errorcode","0");
+
+        System.out.println(user);
 
         return map;
     }
