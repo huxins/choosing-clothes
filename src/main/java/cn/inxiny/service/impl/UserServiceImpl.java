@@ -17,17 +17,18 @@ public class UserServiceImpl implements UserService {
      * 用户注册
      * @param user
      */
-    public void register(User user){
-        SMSUtil sms = new SMSUtil();
-        String rd = String.valueOf((int)((Math.random() * 9 + 1) * 100000));
-        String[] params = {rd,"15"};
-        for (String param : params) {
-            System.out.println(param);
+    public int register(User user){
+        //  手机注册
+        if(user.getPhone()!=null){
+            SMSUtil sms = new SMSUtil();
+            String rd = String.valueOf((int)((Math.random() * 9 + 1) * 100000));
+            String[] params = {rd,"15"};
+            sms.sendSMS(user.getPhone(),params);
         }
-        System.out.println(user.getPhone());
-        sms.sendSMS(user.getPhone(),params);
 
         userMapper.insertUser(user);
+
+        return 0;
     }
 
     public User login(User user){

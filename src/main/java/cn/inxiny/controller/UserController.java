@@ -31,8 +31,9 @@ public class UserController {
         Map map = new HashMap();
         userService.register(user);
 
-        map.put("msg",1);
-        map.put("user",user);
+        map.put("msg","注册成功");
+        map.put("data",user);
+        map.put("errorcode","0");
 
         return map;
     }
@@ -50,8 +51,9 @@ public class UserController {
         model.addAttribute("user",user1);
 
         Map map = new HashMap();
-        map.put("msg",1);
-        map.put("user",user1);
+        map.put("msg","登陆成功");
+        map.put("data",user1);
+        map.put("errorcode","0");
 
         return map;
     }

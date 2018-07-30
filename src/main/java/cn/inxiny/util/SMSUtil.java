@@ -19,7 +19,7 @@ public class SMSUtil {
         // 需要发送短信的手机号码
         // phoneNumber = "13999999999";
         // 短信模板ID，需要在短信应用中申请
-        int templateId = 164606 ;
+        int templateId = 164606;
         // 签名，使用的是`签名内容`，而不是`签名ID`
         String smsSign = "inxiny";
         try {

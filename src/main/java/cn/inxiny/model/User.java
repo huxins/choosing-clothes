@@ -31,6 +31,8 @@ public class User {
 
     private String ditch;
 
+    private String pic;
+
     public Integer getUserid() {
         return userid;
     }
@@ -143,6 +145,11 @@ public class User {
         this.ditch = ditch == null ? null : ditch.trim();
     }
 
-    public User() {
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic == null ? null : pic.trim();
     }
 }
