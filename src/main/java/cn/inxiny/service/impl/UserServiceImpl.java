@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public String picCode(HttpServletResponse response) throws IOException {
+    public void picCode(HttpServletResponse response) throws IOException {
         response.setContentType("image/jpeg");
         //	定义图片的宽高
         int width = 100;
@@ -59,7 +60,6 @@ public class UserServiceImpl implements UserService {
         //	响应回页面中
         ServletOutputStream os = response.getOutputStream();
         ImageIO.write(image, "jpeg", os);
-        return code;
     }
 
     /**

@@ -152,25 +152,4 @@ public class User {
     public void setPic(String pic) {
         this.pic = pic == null ? null : pic.trim();
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userid=" + userid +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", phone='" + phone + '\'' +
-                ", gender='" + gender + '\'' +
-                ", birthday=" + birthday +
-                ", occupation='" + occupation + '\'' +
-                ", income=" + income +
-                ", skintype='" + skintype + '\'' +
-                ", care='" + care + '\'' +
-                ", once='" + once + '\'' +
-                ", ditch='" + ditch + '\'' +
-                ", pic='" + pic + '\'' +
-                '}';
-    }
 }

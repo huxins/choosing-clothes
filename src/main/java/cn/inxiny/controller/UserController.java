@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,9 +43,8 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/picCode")
     public String picCode(HttpServletResponse response) throws IOException {
-        String code = userService.picCode(response);
-        System.out.println(code);
-        return code;
+        userService.picCode(response);
+        return "";
     }
 
     /**
