@@ -6,5 +6,11 @@ import java.util.List;
 
 public interface CommodityService {
     List findClass();
+    List findSeries();
+
+    List findList(Commodity commodity);
+
+    Commodity findCommodity(Commodity commodity);
 
 }
+

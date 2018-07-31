@@ -3,13 +3,81 @@
 <mapper namespace="cn.inxiny.dao.CommodityMapper" >
 
     <resultMap id="sortName" type="Commodity">
-        <id column="commodityId" property="commodityd" />
+        <id column="commodityId" property="commodityid" />
         <result column="sortName" property="sortname" />
+        <result column="rank" property="rank" />
+        <result column="seriesName" property="seriesname" />
+        <result column="seriesSuper" property="seriessuper" />
     </resultMap>
+
+    <!-- 分类 -->
     <select id="findClass" resultMap="sortName">
-      select sortName from commodity
+      select sortName,commodityId,rank from commodity
       where rank = 0
       and sortName is not null
     </select>
 
+    <select id="findClassification" resultMap="sortName" parameterType="Integer">
+        select sortName,commodityId,rank from commodity
+      where rank = 1
+      and sortName is not null
+      and sortSuper = #{0}
+    </select>
+
+    <!-- 系列 -->
+    <select id="findSeries" resultMap="sortName">
+      select seriesName,commodityId,rank from commodity
+      where rank = 0
+      and seriesName is not null
+    </select>
+
+    <select id="findSeriesification" resultMap="sortName" parameterType="Integer">
+        select seriesName,commodityId,rank from commodity
+      where rank = 1
+      and seriesName is not null
+      and seriesSuper = #{0}
+    </select>
+
+    <!-- 商品列表 -->
+    <select id="findComm" resultMap="sortName" parameterType="Commodity">
+        select seriesName,commodityId,rank from commodity
+        <where>
+            rank = 0
+            <if test="sortname != null">and sortName = #{seriesname}</if>
+        </where>
+    </select>
+    <select id="findList1" resultType="Commodity" parameterType="Commodity">
+        select * from commodity
+        where sortSuper = #{commodityid} and sortName = #{sortname}
+    </select>
+    <select id="findList2" resultType="Commodity" parameterType="Commodity">
+        select * from commodity
+        where sort = #{commodityid}
+    </select>
+
+
+    <!-- a商品列表 -->
+    <select id="afindComm" resultMap="sortName" parameterType="Commodity">
+        select seriesName,commodityId,rank from commodity
+        <where>
+            rank = 0
+            <if test="sortname != null">and seriesName = #{seriesname}</if>
+        </where>
+    </select>
+    <select id="afindList1" resultType="Commodity" parameterType="Commodity">
+        select * from commodity
+        where seriesSuper = #{commodityid} and seriesName = #{sortname}
+    </select>
+    <select id="afindList2" resultType="Commodity" parameterType="Commodity">
+        select * from commodity
+        where series = #{commodityid}
+    </select>
+
+    <!-- findCommodity 模糊查询 -->
+    <select id="findCommodity" resultType="Commodity" parameterType="Commodity">
+        select * from commodity
+        where CommodityName like
+        <bind name="likename" value="'%'+commodityname+'%'"/>
+        #{likename}
+    </select>
 </mapper>

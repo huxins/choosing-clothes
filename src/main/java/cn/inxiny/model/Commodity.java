@@ -193,4 +193,29 @@ public class Commodity {
     public void setPic(String pic) {
         this.pic = pic == null ? null : pic.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Commodity{" +
+                "commodityid=" + commodityid +
+                ", sort=" + sort +
+                ", series=" + series +
+                ", time=" + time +
+                ", sales=" + sales +
+                ", rank=" + rank +
+                ", commodityname='" + commodityname + '\'' +
+                ", grade=" + grade +
+                ", brand='" + brand + '\'' +
+                ", place='" + place + '\'' +
+                ", capacity=" + capacity +
+                ", sortname='" + sortname + '\'' +
+                ", seriesname='" + seriesname + '\'' +
+                ", sortsuper=" + sortsuper +
+                ", seriessuper=" + seriessuper +
+                ", effect='" + effect + '\'' +
+                ", skintype='" + skintype + '\'' +
+                ", pic='" + pic + '\'' +
+                ", ChildrenCommodity=" + ChildrenCommodity +
+                '}';
+    }
 }
