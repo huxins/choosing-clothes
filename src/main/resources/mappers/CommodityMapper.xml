@@ -80,4 +80,39 @@
         <bind name="likename" value="'%'+commodityname+'%'"/>
         #{likename}
     </select>
+
+    <!-- 分类总列表 -->
+    <select id="bfindComm" resultType="Commodity" parameterType="Commodity">
+      select sortName,commodityId,rank from commodity
+      where rank = 0
+      and sortName = #{seriesname}
+    </select>
+    <select id="bfindCommA" resultType="Commodity" parameterType="Commodity">
+      select sortName,commodityId,rank from commodity
+      where rank = 1
+      and sortSuper = #{commodityid}
+    </select>
+    <select id="bfindCommB" resultType="Commodity" parameterType="Commodity">
+      select * from commodity
+      where rank = 2
+      and sort = #{commodityid}
+    </select>
+
+    <!-- 系列总列表 -->
+    <select id="cfindComm" resultType="Commodity" parameterType="Commodity">
+      select sortName,commodityId,rank from commodity
+      where rank = 0
+      and seriesName = #{seriesname}
+    </select>
+    <select id="cfindCommA" resultType="Commodity" parameterType="Commodity">
+      select sortName,commodityId,rank from commodity
+      where rank = 1
+      and seriesSuper = #{commodityid}
+    </select>
+    <select id="cfindCommB" resultType="Commodity" parameterType="Commodity">
+      select * from commodity
+      where rank = 2
+      and series = #{commodityid}
+    </select>
+
 </mapper>

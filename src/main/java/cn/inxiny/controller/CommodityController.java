@@ -44,6 +44,7 @@ public class CommodityController {
     @ResponseBody
     @RequestMapping(value = "/list")
     public List list(Commodity commodity) {
+        System.out.println(commodity);
         List sortnames = commodityService.findList(commodity);
         return sortnames;
     }
@@ -53,6 +54,15 @@ public class CommodityController {
     @RequestMapping(value = "/goods")
     public Commodity goods(Commodity commodity) {
         Commodity commodity1 = commodityService.findCommodity(commodity);
+        return commodity1;
+    }
+
+    // 搜索商品
+    @ResponseBody
+    @RequestMapping(value = "/search")
+    public List<Commodity> search(Commodity commodity) {
+        System.out.println(commodity);
+        List<Commodity> commodity1 = commodityService.search(commodity);
         return commodity1;
     }
 

@@ -20,6 +20,14 @@ public interface CommodityMapper {
     Commodity afindList1(Commodity commodity); // 商品列表
     List<Commodity> afindList2(Commodity commodity); // 商品列表
 
-    Commodity findCommodity(Commodity commodity); // 模糊查询
+    List<Commodity> findCommodity(Commodity commodity); // 模糊查询
+
+    Commodity bfindComm(Commodity commodity); // 分类总列表
+    List<Commodity> bfindCommA(Commodity comm); // 分类总列表
+    List<Commodity> bfindCommB(Commodity comm1); // 分类总列表
+
+    Commodity cfindComm(Commodity commodity); // 系列总列表
+    List<Commodity> cfindCommA(Commodity comm); // 系列总列表
+    List<Commodity> cfindCommB(Commodity comm1); // 系列总列表
 
 }

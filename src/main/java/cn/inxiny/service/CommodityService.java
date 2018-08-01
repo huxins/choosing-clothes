@@ -12,5 +12,7 @@ public interface CommodityService {
 
     Commodity findCommodity(Commodity commodity);
 
+    List<Commodity> search(Commodity commodity);
+
 }
 
