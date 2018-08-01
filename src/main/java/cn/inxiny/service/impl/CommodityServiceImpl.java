@@ -36,7 +36,7 @@ public class CommodityServiceImpl implements CommodityService {
     }
 
     //    商品列表分类页面
-    public List findList(Commodity commodity) {
+    public List<Commodity> findList(Commodity commodity) {
         List<Commodity> list = new ArrayList<Commodity>();
         if (commodity.getRank() == 0 && commodity.getSortname() != null) {
             //  分类的列表

@@ -8,7 +8,7 @@ public interface CommodityService {
     List findClass();
     List findSeries();
 
-    List findList(Commodity commodity);
+    List<Commodity> findList(Commodity commodity);
 
     Commodity findCommodity(Commodity commodity);
 

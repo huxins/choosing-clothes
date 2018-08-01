@@ -4,9 +4,7 @@ import cn.inxiny.model.Commodity;
 import cn.inxiny.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +40,29 @@ public class CommodityController {
 
     //    产品列表
     @ResponseBody
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
     public List list(Commodity commodity) {
         System.out.println(commodity);
-        List sortnames = commodityService.findList(commodity);
-        return sortnames;
+        List<Commodity> list = commodityService.findList(commodity);
+        List<Commodity> listA = new ArrayList<Commodity>();
+        if (list.size()>12){
+            for (int i = 0; i < 12; i++) {
+                Commodity commodity1 = list.get(i);
+                listA.add(commodity1);
+            }
+
+            for (Commodity commodity1 : listA) {
+                System.out.println(commodity1);
+            }
+
+            return listA;
+
+        }
+
+        for (Commodity commodity1 : list) {
+            System.out.println(commodity1);
+        }
+        return list;
     }
 
     // 模糊查询
@@ -61,7 +77,6 @@ public class CommodityController {
     @ResponseBody
     @RequestMapping(value = "/search")
     public List<Commodity> search(Commodity commodity) {
-        System.out.println(commodity);
         List<Commodity> commodity1 = commodityService.search(commodity);
         return commodity1;
     }
