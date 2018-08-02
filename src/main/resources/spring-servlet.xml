@@ -24,7 +24,7 @@
 	<!-- 静态资源的处理 js css img -->
 	<mvc:resources location="/resource/" mapping="/resource/**"></mvc:resources>
 	<mvc:resources location="/pic/" mapping="/pic/**"></mvc:resources>
-	<mvc:resources location="/resource/static/" mapping="/static/**"></mvc:resources>
+	<mvc:resources location="/static/" mapping="/static/**"></mvc:resources>
 	<!-- 启动注解 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<!-- 文件上传配置 -->
