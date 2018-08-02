@@ -21,9 +21,7 @@ public class CommodityController {
     @RequestMapping(value = "/classify")
     public List classify() {
         List s = new ArrayList();
-
         List sortnames = commodityService.findClass();
-
         s.add(sortnames);
         List sort = commodityService.findSeries();
         s.add(sort);
@@ -40,9 +38,8 @@ public class CommodityController {
 
     //    产品列表
     @ResponseBody
-    @RequestMapping(value = "/list",method = RequestMethod.POST)
+    @RequestMapping(value = "/list")
     public List list(Commodity commodity) {
-        System.out.println(commodity);
         List<Commodity> list = commodityService.findList(commodity);
         List<Commodity> listA = new ArrayList<Commodity>();
         if (list.size()>12){
@@ -51,17 +48,10 @@ public class CommodityController {
                 listA.add(commodity1);
             }
 
-            for (Commodity commodity1 : listA) {
-                System.out.println(commodity1);
-            }
-
             return listA;
 
         }
 
-        for (Commodity commodity1 : list) {
-            System.out.println(commodity1);
-        }
         return list;
     }
 
