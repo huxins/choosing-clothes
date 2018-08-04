@@ -79,18 +79,32 @@ public class UserServiceImpl implements UserService {
      * 用户注册
      * @param user
      */
-    public int register(User user){
-        //  手机注册
-        if(user.getPhone()!=null){
+    public User register(User user){
 
+        User user1 = userMapper.findUser(user);
+        if (user1 == null){
+            userMapper.insertUser(user);
+            User user2 = userMapper.findUser(user);
+            return user2;
         }
-        userMapper.insertUser(user);
 
-        return 0;
+        return null;
     }
 
+    /**
+     * 用户登录
+     * @param user
+     * @return
+     */
     public User login(User user){
-        User user1 = userMapper.findUser(user);
+        User user1 = userMapper.findUserA(user);
+        return user1;
+    }
+
+    public User update(User user) {
+        userMapper.updateUser(user);
+        User user1 = userMapper.findUserB(user);
+
         return user1;
     }
 

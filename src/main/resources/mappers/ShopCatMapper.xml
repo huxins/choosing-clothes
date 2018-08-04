@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.inxiny.dao.ShopCatMapper" >
+    <insert id="addShopCat" parameterType="ShopCat">
+        insert into shopcat
+ 		(userid,commodityid,commoditycount) values (#{userid},#{commodityid},#{commoditycount})
+    </insert>
+    <resultMap id="shopCat" type="ShopCat">
+        <id column="userid" property="userid"></id>
+        <result column="commodityid" property="commodityid"></result>
+        <result column="commoditycount" property="commoditycount"></result>
+    </resultMap>
+    <select id="selectShopCat" parameterType="ShopCat" resultMap="shopCat">
+        select * from shopCat
+        where userid = #{userid}
+    </select>
+    <select id="selectCommodity" parameterType="ShopCat" resultType="Commodity">
+        select * from commodity
+        where commodityid = #{commodityid}
+    </select>
+    <select id="selectShopCatA" parameterType="ShopCat" resultMap="shopCat">
+        select * from shopCat
+        where userid = #{userid} and commodityid = #{commodityid}
+    </select>
+    <update id="addShopCatCount" parameterType="ShopCat">
+        update shopCat
+        set commoditycount = #{commoditycount} + 1
+        where
+        userId = #{userid} and commodityid = #{commodityid}
+    </update>
+    <update id="minusShopCatCount" parameterType="ShopCat">
+        update shopCat
+        set commoditycount = #{commoditycount} - 1
+        where
+        userId = #{userid} and commodityid = #{commodityid}
+    </update>
+    <select id="selectCount" parameterType="ShopCat" resultMap="shopCat">
+        select commoditycount from shopCat where userId = #{userid} and commodityid = #{commodityid}
+    </select>
+    <delete id="deleteShopCat" parameterType="ShopCat">
+        delete from shopCat where shopid=#{shopid};
+    </delete>
+</mapper>

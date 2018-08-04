@@ -40,6 +40,42 @@ public class Commodity {
 
     private String pic;
 
+    private Integer price;
+
+    @Override
+    public String toString() {
+        return "Commodity{" +
+                "commodityid=" + commodityid +
+                ", sort=" + sort +
+                ", series=" + series +
+                ", time=" + time +
+                ", sales=" + sales +
+                ", rank=" + rank +
+                ", commodityname='" + commodityname + '\'' +
+                ", grade=" + grade +
+                ", brand='" + brand + '\'' +
+                ", place='" + place + '\'' +
+                ", capacity=" + capacity +
+                ", sortname='" + sortname + '\'' +
+                ", seriesname='" + seriesname + '\'' +
+                ", sortsuper=" + sortsuper +
+                ", seriessuper=" + seriessuper +
+                ", effect='" + effect + '\'' +
+                ", skintype='" + skintype + '\'' +
+                ", pic='" + pic + '\'' +
+                ", price=" + price +
+                ", ChildrenCommodity=" + ChildrenCommodity +
+                '}';
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
     private List<Commodity> ChildrenCommodity;  //  子级
 
     public List<Commodity> getChildrenCommodity() {
@@ -194,28 +230,4 @@ public class Commodity {
         this.pic = pic == null ? null : pic.trim();
     }
 
-    @Override
-    public String toString() {
-        return "Commodity{" +
-                "commodityid=" + commodityid +
-                ", sort=" + sort +
-                ", series=" + series +
-                ", time=" + time +
-                ", sales=" + sales +
-                ", rank=" + rank +
-                ", commodityname='" + commodityname + '\'' +
-                ", grade=" + grade +
-                ", brand='" + brand + '\'' +
-                ", place='" + place + '\'' +
-                ", capacity=" + capacity +
-                ", sortname='" + sortname + '\'' +
-                ", seriesname='" + seriesname + '\'' +
-                ", sortsuper=" + sortsuper +
-                ", seriessuper=" + seriessuper +
-                ", effect='" + effect + '\'' +
-                ", skintype='" + skintype + '\'' +
-                ", pic='" + pic + '\'' +
-                ", ChildrenCommodity=" + ChildrenCommodity +
-                '}';
-    }
 }
