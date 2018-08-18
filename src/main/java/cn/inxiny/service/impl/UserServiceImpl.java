@@ -108,4 +108,13 @@ public class UserServiceImpl implements UserService {
         return user1;
     }
 
+    public void addPic(User user) {
+        userMapper.addPic(user);
+    }
+
+    public User selectPic(User user) {
+        User user1 = userMapper.findUserB(user);
+        return user1;
+    }
+
 }

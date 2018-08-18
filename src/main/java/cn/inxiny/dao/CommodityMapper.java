@@ -1,6 +1,7 @@
 package cn.inxiny.dao;
 
 import cn.inxiny.model.Commodity;
+import cn.inxiny.model.OrderForm;
 
 import java.util.List;
 
@@ -30,4 +31,5 @@ public interface CommodityMapper {
     List<Commodity> cfindCommA(Commodity comm); // 系列总列表
     List<Commodity> cfindCommB(Commodity comm1); // 系列总列表
 
+    OrderForm seCo(Integer commodityid);    //  查找商品信息
 }

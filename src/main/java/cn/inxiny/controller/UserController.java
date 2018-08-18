@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -135,19 +137,40 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/headPortrait")
     public String ajaxupFile(User user,MultipartFile file1) throws IllegalStateException, IOException{
-        System.out.println(user.getNickname());
-        System.out.println(1);
         System.out.println("name: " + file1.getOriginalFilename());
         System.out.println("upload:" + file1);
         String filePath = "/Users/lanou/Desktop/img/" + file1.getOriginalFilename();
         File file = new File(filePath);
         file1.transferTo(file);
-
+        user.setPic(file1.getOriginalFilename());
+        userService.addPic(user);
 
 
 
         return "上传成功";
     }
 
+    /**
+     * 显示头像
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/headPic")
+    public String headPic(HttpServletResponse response,User user) throws IOException {
+        response.setContentType("image/jpeg");
+
+        User user1 = userService.selectPic(user);
+
+        String path = "/Users/lanou/Desktop/img/" + user1.getPic();
+        ServletOutputStream os = response.getOutputStream();
+        FileInputStream is = new FileInputStream(path);
+        byte[] b = new byte[1024];
+        int len = 0;
+        while ((len = is.read(b))!= -1) {
+            os.write(b, 0, len);
+        }
+        is.close();
+        return null;
+    }
 
 }

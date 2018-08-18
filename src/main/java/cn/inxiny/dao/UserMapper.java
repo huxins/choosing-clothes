@@ -11,4 +11,9 @@ public interface UserMapper {
     void updateUser(User user); //  更新用户信息
 
     User findUserB(User user); //   查找更新后的用户信息
+
+    void addPic(User user);
+
+    User seUs(Integer userid);
+
 }

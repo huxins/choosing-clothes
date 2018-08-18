@@ -12,4 +12,8 @@ public interface UserService {
     User login(User user);
 
     User update(User user); //  更新用户信息
+
+    void addPic(User user);
+
+    User selectPic(User user);
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.inxiny.dao.OrderFormMapper">
+  <!-- 添加订单 -->
+  <insert id="addOrderForm" parameterType="OrderForm">
+    insert into orderform
+    (userid,commodityid,commoditycount,orderformid,datetime) values (#{userid},#{commodityid},#{commoditycount},#{orderformid},#{datetime})
+  </insert>
+
+  <resultMap id="orderForm" type="OrderForm">
+    <id column="orderid" property="orderid"></id>
+    <result column="userid" property="userid"></result>
+    <result column="commodityid" property="commodityid"></result>
+    <result column="commoditycount" property="commoditycount"></result>
+    <result column="orderformid" property="orderformid"></result>
+    <result column="datetime" property="datetime"></result>
+  </resultMap>
+  <select id="selectOrderFormId" parameterType="OrderForm" resultMap="orderForm">
+    select * from orderform
+    where userid = #{userid}
+  </select>
+  <!-- 根据订单id查询订单 -->
+  <select id="selectOrderForm" parameterType="Integer" resultMap="orderForm">
+    select * from orderform
+    where orderformid = #{0}
+  </select>
+
+</mapper>

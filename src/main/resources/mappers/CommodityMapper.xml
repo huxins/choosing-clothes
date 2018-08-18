@@ -115,5 +115,8 @@
       and series = #{commodityid}
     </select>
 
+    <select id="seCo" parameterType="Integer" resultType="Commodity">
+        select * from commodity where commodityid = #{0}
+    </select>
 
 </mapper>

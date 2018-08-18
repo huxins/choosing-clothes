@@ -28,6 +28,7 @@ public class CommodityController {
         return s;
     }
 
+
     //    系列
     @ResponseBody
     @RequestMapping(value = "/series")
